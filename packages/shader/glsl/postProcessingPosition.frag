@@ -71,7 +71,7 @@ vec3 generateRandomParticle(vec2 seed, float lev) {
 }
 
 bool particleOutbound(vec3 particle) {
-    return particle.y < viewerLatRange.x || particle.y > viewerLatRange.y;
+    return particle.y < viewerLatRange.x || particle.y > viewerLatRange.y || particle.x < viewerLonRange.x || particle.x > viewerLonRange.y;
 }
 
 out vec4 fragColor;
