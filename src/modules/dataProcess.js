@@ -232,7 +232,11 @@ export default (function () {
   var randomizeParticles = function (maxParticles, viewerParameters) {
     var array = new Float32Array(4 * maxParticles);
     for (var i = 0; i < maxParticles; i++) {
-        array[4 * i] = Cesium.Math.randomBetween(viewerParameters.lonRange.x, viewerParameters.lonRange.y);
+        if (viewerParameters.lonRange.x>viewerParameters.lonRange.y){
+          array[4 * i] = Cesium.Math.randomBetween(viewerParameters.lonRange.x, viewerParameters.lonRange.y+360);
+        }else{
+          array[4 * i] = Cesium.Math.randomBetween(viewerParameters.lonRange.x, viewerParameters.lonRange.y);
+        }
         array[4 * i + 1] = Cesium.Math.randomBetween(viewerParameters.latRange.x, viewerParameters.latRange.y);
         array[4 * i + 2] = Cesium.Math.randomBetween(data.lev.min, data.lev.max);
         array[4 * i + 3] = 0.0;
