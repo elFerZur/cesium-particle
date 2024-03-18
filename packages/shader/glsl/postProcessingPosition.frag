@@ -67,7 +67,7 @@ vec3 generateRandomParticle(vec2 seed, float lev) {
     
     float height = getTextureValue(H, vec3(randomLon, randomLat, lev)).r;
 
-    return vec3(randomLon, randomLat, height);
+    return vec3(randomLon, randomLat, lev);
 }
 
 bool particleOutbound(vec3 particle) {
