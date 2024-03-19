@@ -18,8 +18,8 @@ uniform vec2 viewerLonRange;
 uniform vec2 viewerLatRange;
 
 const float randomCoefficient = 0.1; // use to improve the pseudo-random generator
-const float dropRate = 0.1; // drop rate is a chance a particle will restart at random position to avoid degeneration
-const float dropRateBump = 0.1;
+uniform float dropRate; // drop rate is a chance a particle will restart at random position to avoid degeneration
+uniform float dropRateBump;
 
 in vec2 v_textureCoordinates;
 
@@ -71,7 +71,7 @@ vec3 generateRandomParticle(vec2 seed, float lev) {
 }
 
 bool particleOutbound(vec3 particle) {
-    return particle.y < viewerLatRange.x || particle.y > viewerLatRange.y || particle.x < lonRange.x || particle.y > lonRange.y;
+    return particle.y < viewerLatRange.x || particle.y > viewerLatRange.y || particle.x < viewerLonRange.x || particle.y > viewerLonRange.y;
 }
 
 out vec4 fragColor;

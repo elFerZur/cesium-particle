@@ -16,8 +16,8 @@ const defaultParticleSystemOptions = {
     maxParticles: 64 * 64,
     particleHeight: 1000.0,
     fadeOpacity: 0.996,
-    dropRate: 0.003,
-    dropRateBump: 0.01,
+    dropRate: 0.1,
+    dropRateBump: 0.1,
     speedFactor: 1.0,
     lineWidth: 4.0,
     dynamic: true
