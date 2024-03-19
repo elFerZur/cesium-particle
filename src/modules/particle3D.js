@@ -165,12 +165,12 @@ export default class Particle3D {
     this.particleSystem.applyUserInput(this.processUserInput(userInput));
   }
 
-  show() {
+  show(isListener) {
     let that = this;
     for (let primitive of that.primitives) {
       primitive.show = true;
     }
-    that.setupEventListeners();
+    if (isListener!=undefined&&isListener) that.setupEventListeners();
     var animate = function () {
       that.viewer.resize();
       that.viewer.scene.requestRender();
@@ -179,12 +179,12 @@ export default class Particle3D {
     animate();
   }
 
-  hide() {
+  hide(isListener) {
     for (let primitive of this.primitives) {
       primitive.show = false;
     }
     this.viewer.scene.requestRender();
-    this.removeEventListeners();
+    if (isListener!=undefined&&isListener) this.removeEventListeners();
     window.cancelAnimationFrame(this.animate);
   }
 
