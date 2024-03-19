@@ -62,7 +62,7 @@ bool particleNoSpeed(vec3 particle) {
 
 vec3 generateRandomParticle(vec2 seed, float lev) {
     // ensure the longitude is in [0, 360]
-    float randomLon = mod(rand(seed, lonRange), 360.0);
+    float randomLon = rand(seed, lonRange);
     float randomLat = rand(-seed, latRange);
     
     float height = getTextureValue(H, vec3(randomLon, randomLat, lev)).r;
@@ -71,7 +71,7 @@ vec3 generateRandomParticle(vec2 seed, float lev) {
 }
 
 bool particleOutbound(vec3 particle) {
-    return particle.y < viewerLatRange.x || particle.y > viewerLatRange.y;
+    return particle.y < viewerLatRange.x || particle.y > viewerLatRange.y || particle.x < lonRange.x || particle.y > lonRange.y;
 }
 
 out vec4 fragColor;
